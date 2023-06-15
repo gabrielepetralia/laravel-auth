@@ -8,7 +8,7 @@ export default defineConfig({
     plugins: [
         laravel({
             // edit the first value of the array input to point to our new sass files and folder.
-            input: ['resources/scss/app.scss', 'resources/js/app.js'],
+            input: ['resources/scss/app.scss', 'resources/js/app.js', 'resources/scss/app_guest.scss', 'resources/js/app_guest.js'],
             refresh: true,
         }),
     ],
