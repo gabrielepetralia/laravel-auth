@@ -18,6 +18,8 @@
 
     <body>
 
+      @include('guest.partials.header')
+
       <main>
         @yield('content')
       </main>
