@@ -1,11 +1,11 @@
 <header>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm text-white py-3">
-    <div class="container">
+    <div class="container-fluid px-4">
 
-      <div class="logo me-3">
-        <span class="fs-5 fw-semibold">LOGO</span>
-      </div>
+      <a href="{{ route('admin.home') }}" class="logo me-3 text-decoration-none text-white">
+        <span class="fs-5 fw-semibold">BOOLFOLIO</span>
+      </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -24,16 +24,16 @@
               <!-- Authentication Links -->
               @guest
               <li class="nav-item">
-                  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                  <a class="nav-link" href="{{ route('login') }}">Login</a>
               </li>
               @if (Route::has('register'))
               <li class="nav-item">
-                  <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                  <a class="nav-link" href="{{ route('register') }}">Register</a>
               </li>
               @endif
               @else
               <li class="nav-item me-2">
-                <a class="nav-link d-flex align-items-center" href="#">
+                <a class="nav-link d-flex align-items-center" href="#" title="Profile">
                   <i class="fa-solid fa-circle-user fs-4 me-2"></i>
                   <span>{{ Auth::user()->name }}</span>
                 </a>
@@ -41,7 +41,9 @@
               <li class="nav-item">
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                   @csrf
-                  <button type="submit" class="btn btn-danger">Logout</button>
+                  <button type="submit" class="btn btn-danger" title="Logout">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  </button>
                 </form>
               </li>
               @endguest
