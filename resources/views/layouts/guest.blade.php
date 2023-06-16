@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <link rel="shortcut icon" href="/favicon.png" type="png">
         <title>Laravel Boolfolio @yield('title')</title>
 
         <!-- Fonts -->
