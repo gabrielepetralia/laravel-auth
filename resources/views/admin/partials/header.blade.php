@@ -1,9 +1,9 @@
 <header>
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm text-white py-3">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm text-white h-100">
     <div class="container-fluid px-4">
 
-      <a href="{{ route('admin.home') }}" class="logo me-3 text-decoration-none text-white">
+      <a href="{{ route('admin.home') }}" class="logo me-3 text-white">
         <span class="fs-5 fw-semibold">BOOLFOLIO</span>
       </a>
 

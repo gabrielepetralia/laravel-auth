@@ -20,13 +20,21 @@
   @vite(['resources/scss/admin.scss', 'resources/js/admin.js'])
 </head>
 
-<body class="bg-secondary">
+<body>
   <div id="app">
 
     @include('admin.partials.header')
 
     <main>
-        @yield('content')
+      <div class="main-wrapper @auth d-flex @endauth">
+        @auth
+          @include('admin.partials.aside')
+        @endauth
+
+        <div class="main-view w-100 overflow-auto">
+          @yield('content')
+        </div>
+      </div>
     </main>
 
   </div>
