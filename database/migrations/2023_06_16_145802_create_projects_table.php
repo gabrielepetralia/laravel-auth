@@ -18,8 +18,8 @@ return new class extends Migration
 
         $table->string('name');
         $table->string('slug')->unique();
-        $table->string('used_technologies')->nullable();
         $table->text('description')->nullable();
+        $table->string('used_technologies')->nullable();
         $table->string('start_date');
         $table->string('end_date')->nullable();
         $table->boolean('is_finished')->default(0);
