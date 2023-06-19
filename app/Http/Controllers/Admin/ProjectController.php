@@ -56,9 +56,10 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        //
+      $technologies = explode("|", $project->used_technologies);
+      return view('admin.projects.show', compact('project', 'technologies'));
     }
 
     /**

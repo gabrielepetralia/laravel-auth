@@ -16,15 +16,15 @@ class ProjectsTableSeeder extends Seeder
    */
   public function run(Faker $faker)
   {
-    $technologies = ['html','css','js','php','sql','MySQL','Vue','Laravel'];
+    $technologies = ['html','css','js','php','sql','mysql','vue','laravel'];
 
     for ($i = 0; $i < 50; $i++) {
       $new_project = new Project();
 
       $new_project->name = str_replace(".", "", $faker->sentence(3));
       $new_project->slug = Project::generateSlug($new_project->name);
-      $new_project->description = $faker->text();
-      $new_project->used_technologies = implode(" | ", $faker->randomElements($technologies, rand(3, count($technologies))));
+      $new_project->description = $faker->text(1000);
+      $new_project->used_technologies = implode("|", $faker->randomElements($technologies, rand(3, count($technologies))));
       $new_project->start_date = $faker->date();
       $new_project->is_finished = rand(0, 1);
       if($new_project->is_finished === 1) {

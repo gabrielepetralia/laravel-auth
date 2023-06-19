@@ -4,7 +4,7 @@
     <div class="container-fluid px-4">
 
       <a href="{{ route('admin.home') }}" class="logo me-3 text-white d-flex align-items-center">
-        <img src="/logo.png" alt="Logo">
+        <img src="/img/logo.png" alt="Logo">
         <span class="fs-5 fw-semibold ms-2">BOOLFOLIO</span>
       </a>
 

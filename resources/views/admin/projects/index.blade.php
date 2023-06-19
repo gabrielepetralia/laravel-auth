@@ -10,10 +10,10 @@
 
   <div class="table-wrapper rounded-3 overflow-hidden mb-4">
 
-    <table class="table table-dark table-striped table-hover text-center m-0">
+    <table class="table table-dark table-hover text-center m-0 table-index">
       <thead>
         <tr class="">
-          <th scope="col" class="py-3">
+          <th scope="col">
             <a class="text-white" href="{{ route('admin.orderby', ['direction' => $direction ]) }}">ID
               @if($direction === 'asc')
                 <i class="fa-solid fa-arrow-down"></i>
@@ -22,11 +22,11 @@
               @endif
             </a>
           </th>
-          <th scope="col" class="text-start w-25 py-3">Name</th>
-          <th scope="col" class="py-3">Is Finished</th>
-          <th scope="col" class="py-3">Start Date</th>
-          <th scope="col" class="py-3">End Date</th>
-          <th scope="col" class="py-3">Actions</th>
+          <th scope="col" class="text-start w-25">Name</th>
+          <th scope="col">Is Finished</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -50,7 +50,7 @@
           </td>
 
           <td>
-            <a href="#" title="Show" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+            <a href="{{ route('admin.projects.show', $project) }}" title="Show" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
             <a href="#" title="Edit" class="btn btn-warning text-white"><i class="fa-solid fa-pencil"></i></a>
             <a href="#" title="Edit" class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i></a>
           </td>
