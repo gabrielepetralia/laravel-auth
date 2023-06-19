@@ -3,8 +3,9 @@
   <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm text-white h-100">
     <div class="container-fluid px-4">
 
-      <a href="{{ route('admin.home') }}" class="logo me-3 text-white">
-        <span class="fs-5 fw-semibold">BOOLFOLIO</span>
+      <a href="{{ route('admin.home') }}" class="logo me-3 text-white d-flex align-items-center">
+        <img src="/logo.png" alt="Logo">
+        <span class="fs-5 fw-semibold ms-2">BOOLFOLIO</span>
       </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

@@ -13,7 +13,15 @@
     <table class="table table-dark table-striped table-hover text-center m-0">
       <thead>
         <tr class="">
-          <th scope="col" class="py-3">ID</th>
+          <th scope="col" class="py-3">
+            <a class="text-white" href="{{ route('admin.orderby', ['direction' => $direction ]) }}">ID
+              @if($direction === 'asc')
+                <i class="fa-solid fa-arrow-down"></i>
+              @else
+                <i class="fa-solid fa-arrow-up"></i>
+              @endif
+            </a>
+          </th>
           <th scope="col" class="text-start w-25 py-3">Name</th>
           <th scope="col" class="py-3">Is Finished</th>
           <th scope="col" class="py-3">Start Date</th>
