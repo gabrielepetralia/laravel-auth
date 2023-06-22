@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-  | Projects | {{ $project->name }}
+  | Project : {{ $project->name }}
 @endsection
 
 @section('content')
@@ -18,18 +18,30 @@
         </tr>
         <tr>
           <td class="fw-semibold w-25">Image :</td>
-          <td><img class="w-50" src="" alt="{{ $project->name }}" onerror=" this.src = '/img/noimage.png' "></td>
+          <td>
+            <img class="w-50" src="{{ asset('storage/' . $project->img_path) }}" alt="{{ $project->name }}" onerror=" this.src = '/img/noimage.png' ">
+          </td>
         </tr>
         <tr>
           <td class="fw-semibold w-25">Description :</td>
-          <td>{{ $project->description }}</td>
+          <td class="{{ empty($project->description) ? 'text-danger' : '' }}">
+            @if(!empty($project->description))
+              {!! $project->description !!}
+            @else
+              Description not available
+            @endif
+          </td>
         </tr>
         <tr>
           <td class="fw-semibold">Used Technologies :</td>
-          <td>
-            @foreach ($technologies as $technology)
-              <img class="tech-logo" src="{{ '/img/tech_logos/' . $technology . '.png' }}" alt="{{ $technology }}">
-            @endforeach
+          <td class="text-danger">
+            @if(!empty($technologies[0]))
+              @foreach ($technologies as $technology)
+                <img class="tech-logo" src="{{ '/img/tech_logos/' . $technology . '.png' }}" alt="{{ $technology }}">
+              @endforeach
+            @else
+              Used technologies not available
+            @endif
           </td>
         </tr>
         <tr>
@@ -50,7 +62,7 @@
         <tr>
           <td class="fw-semibold">End Date :</td>
            <td class="{{ $project->end_date ? '' : 'text-danger' }}" >
-            {{ $project->end_date ? date_format($end_date,"d/m/Y") : 'Not Finished' }}
+            {{ $project->end_date ? date_format($end_date,"d/m/Y") : 'Date not available' }}
           </td>
         </tr>
       </tbody>
@@ -63,7 +75,7 @@
 
     <div>
       <a href="#" title="Edit" class="btn btn-warning text-white"><i class="fa-solid fa-pencil"></i></a>
-      <a href="#" title="Edit" class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i></a>
+      <a href="#" title="Delete" class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i></a>
     </div>
   </div>
 

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Helpers\CustomHelper;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -36,7 +39,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+      return view('admin.projects.create');
     }
 
     /**
@@ -45,9 +48,26 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
-        //
+      $form_data = $request->all();
+
+      if (!isset($form_data['is_finished'])) $form_data['is_finished'] = 0;
+
+      $form_data['slug'] = CustomHelper::generateUniqueSlug($form_data['name'], new Project());
+
+      if (array_key_exists('img', $form_data)) {
+        $form_data['img_path'] = Storage::put('uploads', $form_data['img']);
+        $form_data['img_original_name'] = $request->file('img')->getClientOriginalName();
+      }
+
+      $new_project = new Project();
+
+      $new_project->fill($form_data);
+
+      $new_project->save();
+
+      return redirect()->route('admin.projects.show', $new_project);
     }
 
     /**

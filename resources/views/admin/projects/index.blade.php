@@ -6,7 +6,12 @@
 
 @section('content')
 <div class="container">
-  <h2 class="fs-4 my-4">Projects</h2>
+  <div class="d-flex justify-content-between my-4">
+    <h2 class="fs-4 mb-0">Projects</h2>
+    <div>
+      <a href="{{ route('admin.projects.create') }}" title="Add new Project" class="btn btn-success"><i class="fa-solid fa-plus"></i></a>
+    </div>
+  </div>
 
   <div class="table-wrapper rounded-3 overflow-hidden mb-4">
 
@@ -46,13 +51,13 @@
           @endphp
           <td>{{ date_format($start_date,"d/m/Y") }}</td>
           <td class="{{ $project->end_date ? '' : 'text-danger' }}" >
-            {{ $project->end_date ? date_format($end_date,"d/m/Y") : 'Not Finished' }}
+            {{ $project->end_date ? date_format($end_date,"d/m/Y") : 'Date not available' }}
           </td>
 
           <td>
             <a href="{{ route('admin.projects.show', $project) }}" title="Show" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
             <a href="#" title="Edit" class="btn btn-warning text-white"><i class="fa-solid fa-pencil"></i></a>
-            <a href="#" title="Edit" class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i></a>
+            <a href="#" title="Delete" class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i></a>
           </td>
         </tr>
         @endforeach
