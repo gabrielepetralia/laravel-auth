@@ -75,7 +75,12 @@
 
     <div>
       <a href="{{ route('admin.projects.edit', $project)}}" title="Edit" class="btn btn-warning text-white"><i class="fa-solid fa-pencil"></i></a>
-      <a href="#" title="Delete" class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i></a>
+      @include('admin.partials.delete_modal', [
+        'id' => $project->id,
+        'name' => $project->name,
+        'route' => route('admin.projects.destroy', $project),
+        'model' => 'project'
+      ])
     </div>
   </div>
 

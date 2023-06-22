@@ -128,8 +128,13 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+      if ($project->img_path) {
+        Storage::disk('public')->delete($project->img_path);
+      }
+
+      $project->delete();
+      return redirect()->route('admin.projects.index')->with('deleted', "The project '$project->name' has been successfully deleted !");
     }
 }

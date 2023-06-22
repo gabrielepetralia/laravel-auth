@@ -13,6 +13,12 @@
     </div>
   </div>
 
+  @if (session('deleted'))
+    <div class="alert alert-success" role="alert">
+        {{ session('deleted') }}
+    </div>
+  @endif
+
   <div class="table-wrapper rounded-3 overflow-hidden mb-4">
 
     <table class="table table-dark table-hover text-center m-0 table-index">
@@ -57,7 +63,12 @@
           <td>
             <a href="{{ route('admin.projects.show', $project) }}" title="Show" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
             <a href="{{ route('admin.projects.edit', $project) }}" title="Edit" class="btn btn-warning text-white"><i class="fa-solid fa-pencil"></i></a>
-            <a href="#" title="Delete" class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i></a>
+            @include('admin.partials.delete_modal', [
+              'id' => $project->id,
+              'name' => $project->name,
+              'route' => route('admin.projects.destroy', $project),
+              'model' => 'project'
+            ])
           </td>
         </tr>
         @endforeach
