@@ -88,9 +88,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+      return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -100,9 +100,26 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProjectRequest $request, Project $project)
     {
-        //
+      $form_data = $request->all();
+
+      if (!isset($form_data['is_finished'])) $form_data['is_finished'] = 0;
+
+      if ($project->name !== $form_data['name']) {
+        $form_data['slug']  = CustomHelper::generateUniqueSlug($form_data['name'], new Project());
+      } else {
+        $form_data['slug']  = $project->slug;
+      }
+
+      if (array_key_exists('img', $form_data)) {
+        $form_data['img_path'] = Storage::put('uploads', $form_data['img']);
+        $form_data['img_original_name'] = $request->file('img')->getClientOriginalName();
+      }
+
+      $project->update($form_data);
+
+      return redirect()->route('admin.projects.show', compact('project'));
     }
 
     /**

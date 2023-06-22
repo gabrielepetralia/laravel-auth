@@ -56,7 +56,7 @@
 
           <td>
             <a href="{{ route('admin.projects.show', $project) }}" title="Show" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
-            <a href="#" title="Edit" class="btn btn-warning text-white"><i class="fa-solid fa-pencil"></i></a>
+            <a href="{{ route('admin.projects.edit', $project) }}" title="Edit" class="btn btn-warning text-white"><i class="fa-solid fa-pencil"></i></a>
             <a href="#" title="Delete" class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i></a>
           </td>
         </tr>

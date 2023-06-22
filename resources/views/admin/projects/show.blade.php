@@ -74,7 +74,7 @@
     <a href="{{ route('admin.projects.index')}}" title="Go back" class="btn btn-primary text-white"><i class="fa-solid fa-left-long"></i></a>
 
     <div>
-      <a href="#" title="Edit" class="btn btn-warning text-white"><i class="fa-solid fa-pencil"></i></a>
+      <a href="{{ route('admin.projects.edit', $project)}}" title="Edit" class="btn btn-warning text-white"><i class="fa-solid fa-pencil"></i></a>
       <a href="#" title="Delete" class="btn btn-danger text-white"><i class="fa-solid fa-trash"></i></a>
     </div>
   </div>
